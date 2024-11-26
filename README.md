@@ -2,19 +2,21 @@
 
 ### 使用方式
 
-#### 下载或者源码编译后的 asfp_java_agent.jar ,启动ASFP后在菜单栏 Help | Edit Custom Properties 配置 javaagent
+#### [下载](https://github.com/ShikinChen/asfp_java_agent/releases)或者源码编译后的 asfp_java_agent.jar ,启动ASFP后在菜单栏 Help | Edit Custom Properties 配置 javaagent
 
 ```
 -javaagent:存放目录的绝对路径/asfp_java_agent.jar
 ```
 
 #### 基于源码进行编译
-编译后的jar包在build/libs/asfp_java_agent.jar
 ```shell
 git clone https://github.com/ShikinChen/asfp_java_agent.git
 cd asfp_java_agent
 ./gradlew jar
 ```
+
+编译后的jar包在项目的build/libs/asfp_java_agent.jar
+
 ### 程序图标创建和说明
 默认使用ASFP创建程序图标<br/>
 ![01.png](img/01.png)
