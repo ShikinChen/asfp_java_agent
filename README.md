@@ -44,8 +44,8 @@ StartupNotify=true
 ### 配置了frameworks/base/core, frameworks/base/services会生成platformprotoslite相关jar包导致部分android库的源码引导混乱原因
 
 在/opt/android-studio-for-platform/plugins/asfp/lib/asfp.jar的
-com/android/tools/asfp/soong/BuildArtifactMergedModuleInfo.class从而根据out/soong/module_bp_java_deps.json进行源码依赖索引配置<br/>
-本来打算通过asm修改里面的静态常量EXCLUDED_MODULES增加过滤模块,从忽略不需要的模块,但是我估计因为常量是放方法区改变set的长度导致有位移而报错,就修改JdepsKt的parseJdeps返参map,删除多余的模块<br/><br/>
+com/android/tools/asfp/soong/BuildArtifactMergedModuleInfo.class是分析aosp项目的out/soong/module_bp_java_deps.json进行源码依赖索引配置<br/>
+本来打算通过asm修改里面的静态常量EXCLUDED_MODULES增加过滤模块,从而忽略不需要的模块,但是报获取的字节码位移错误,我估计因为常量是放方法区改变set的长度导致有位移而报错,就修改JdepsKt的parseJdeps返参map,删除多余的模块<br/><br/>
 BuildArtifactMergedModuleInfo.class关键代码
 
 ```java
