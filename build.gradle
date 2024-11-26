@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group = 'me.shiki'
+version = '0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.ow2.asm:asm:9.2'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes('Manifest-Version': '0.1',
+                'Premain-Class': 'ASFPMainAgent',
+                'Agent-Class': 'ASFPMainAgent',
+                'Can-Redefine-Classes': 'true',
+                'Can-Retransform-Classes': 'true')
+    }
+    archiveBaseName.set('asfp_java_agent')
+    archiveVersion.set('')
+    archiveClassifier.set('')
+    manifest {
+        attributes('Premain-Class': 'ASFPMainAgent')
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
